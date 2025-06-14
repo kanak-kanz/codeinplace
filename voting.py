@@ -29,18 +29,18 @@ def vote():
     try:
         age = int(input("Enter your age: "))
     except ValueError:
-        print("❌ Invalid age input.\n")
+        print(" Invalid age input.\n")
         return
 
     voter_id_raw = input("Enter your Voter ID: ")
     voter_id = normalize_voter_id(voter_id_raw)
 
     if age < 18:
-        print("❌ Sorry, you are not eligible to vote.\n")
+        print(" Sorry, you are not eligible to vote.\n")
         return
 
     if voter_id in voted_voters:
-        print("⚠️ You have already voted. Duplicate voting is not allowed!\n")
+        print("You have already voted. Duplicate voting is not allowed!\n")
         return
 
     display_candidates()
@@ -50,11 +50,11 @@ def vote():
             selected_candidate = list(candidates.keys())[choice - 1]
             candidates[selected_candidate] += 1
             voted_voters.add(voter_id)
-            print(f"\n✅ Thank you, {name}! Your vote for {selected_candidate} has been recorded.\n")
+            print(f"\n Thank you, {name}! Your vote for {selected_candidate} has been recorded.\n")
         else:
-            print("❌ Invalid choice. Vote not recorded.\n")
+            print("Invalid choice. Vote not recorded.\n")
     except ValueError:
-        print("❌ Invalid input. Please enter a number.\n")
+        print(" Invalid input. Please enter a number.\n")
 
 # Function to show results (Admin only)
 def show_results():
@@ -70,9 +70,9 @@ def show_results():
         winners = [candidate for candidate, votes in candidates.items() if votes == max_votes]
 
         if len(winners) == 1:
-            print(f"\n🏆 Winner: {winners[0]}")
+            print(f"\n Winner: {winners[0]}")
         else:
-            print("\n🤝 It's a tie between:")
+            print("\n It's a tie between:")
             for w in winners:
                 print(f"🔷 {w}")
             print(f"Each has {max_votes} votes.")
@@ -81,7 +81,7 @@ def show_results():
             final_winner = random.choice(winners)
             print(f"🏁 By lottery, the elected winner is: {final_winner}")
     else:
-        print("❌ Incorrect admin credentials.\n")
+        print(" Incorrect admin credentials.\n")
 
 # Main Menu
 def main():
@@ -98,10 +98,10 @@ def main():
         elif option == '2':
             show_results()
         elif option == '3':
-            print("👋 Thank you for using the voting system. Jai Hind!")
+            print(" Thank you for using the voting system. Jai Hind!")
             break
         else:
-            print("❌ Invalid choice. Try again.")
+            print(" Invalid choice. Try again.")
 
 # Run the app
 main()
